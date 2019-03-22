@@ -1,0 +1,34 @@
+﻿{
+  "manifest_version": 2,
+  "name": "Detach Tab",
+  "version": "1.0",
+  "description": "Detach tab with customizable keyboard shortcut.",
+  "options_ui": {
+      "page": "options.html",
+      "browser_style": true
+  },
+  "developer": {
+    "name": "Claymont",
+    "url": "https://github.com/Claymont/detach-tab"
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+      "scripts": ["background.js"]
+  },
+  "commands": {
+    "detach-tab": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space"
+      },
+      "description": "Detaches active tab"
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "claymont@mail.com_detach-tab",
+      "strict_min_version": "60"
+    }
+  }
+}
