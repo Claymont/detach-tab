@@ -1,4 +1,5 @@
 ﻿const commandName = 'detach-tab';
+const commandUndo = 'undo-detach-tab';
 
 /**
  * Update the UI: set the value of the shortcut textbox.
@@ -8,6 +9,9 @@ async function updateUI() {
   for (command of commands) {
     if (command.name === commandName) {
       document.querySelector('#shortcut').value = command.shortcut;
+    }
+    if (command.name === commandUndo) {
+      document.querySelector('#shortcutundo').value = command.shortcut;
     }
   }
 }
@@ -20,6 +24,10 @@ async function updateShortcut() {
     name: commandName,
     shortcut: document.querySelector('#shortcut').value
   });
+  await browser.commands.update({
+    name: commandUndo,
+    shortcut: document.querySelector('#shortcutundo').value
+  });
 }
 
 /**
@@ -27,6 +35,7 @@ async function updateShortcut() {
  */
 async function resetShortcut() {
   await browser.commands.reset(commandName);
+  await browser.commands.reset(commandUndo);
   updateUI();
 }
 
