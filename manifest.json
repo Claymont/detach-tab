@@ -1,7 +1,7 @@
 ﻿{
   "manifest_version": 2,
   "name": "Detach Tab",
-  "version": "2.0",
+  "version": "2.0.2",
   "description": "Detach and Reattach tab with customizable keyboard shortcuts.",
   "options_ui": {
       "page": "options.html",
@@ -24,11 +24,11 @@
       },
       "description": "Detaches active tab"
     },
-    "undo-detach-tab": {
+    "reattach-tab": {
       "suggested_key": {
         "default": "Ctrl+Shift+S"
       },
-      "description": "Reattach detached tab"
+      "description": "Reattaches last detached tab"
     }
   },
   "applications": {

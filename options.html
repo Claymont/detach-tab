@@ -3,21 +3,25 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="options.css">
   </head>
 
   <body>
-    <form><br>
+
+    <form class="browser-style"><br>
       <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/commands#Key_combinations">Keyboard shortcut combination rules</a>
       <br><br>
-      <label>Keyboard shortcut for detach: </label>
-      <input type="text" id="shortcut">
+      <label>Detach:</label><br>
+      <input type="text" id="shortcut-detach">
       <br>
-      <label>Keyboard shortcut for reattach: </label>
-      <input type="text" id="shortcutundo">
+      <label>Reattach:</label><br>
+      <input type="text" id="shortcut-reattach">
+      <br>
+      <button id="apply" class="browser-style">Apply</button>
+      <button id="reset" class="browser-style">Reset</button>
       <br><br>
-      <button id="update">Apply</button>
-      <button id="reset">Reset</button>
     </form>
+
     <script src="options.js"></script>
   </body>
 

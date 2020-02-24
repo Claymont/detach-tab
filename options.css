@@ -1,0 +1,23 @@
+body {
+  font-size: 15px !important;
+}
+
+input {
+  font-size: 14px !important;
+}
+
+#shortcut-detach {
+  margin-bottom: 8px;
+}
+
+#shortcut-reattach {
+  margin-bottom: 16px;
+}
+
+button {
+  font-size: 14px !important;
+}
+
+#apply {
+  margin-right: 4px;
+}

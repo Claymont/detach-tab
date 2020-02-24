@@ -1,5 +1,5 @@
-﻿const commandName = 'detach-tab';
-const commandUndo = 'undo-detach-tab';
+﻿const commandDetach = 'detach-tab';
+const commandReattach = 'reattach-tab';
 
 /**
  * Update the UI: set the value of the shortcut textbox.
@@ -7,11 +7,11 @@ const commandUndo = 'undo-detach-tab';
 async function updateUI() {
   let commands = await browser.commands.getAll();
   for (command of commands) {
-    if (command.name === commandName) {
-      document.querySelector('#shortcut').value = command.shortcut;
+    if (command.name === commandDetach) {
+      document.querySelector('#shortcut-detach').value = command.shortcut;
     }
-    if (command.name === commandUndo) {
-      document.querySelector('#shortcutundo').value = command.shortcut;
+    if (command.name === commandReattach) {
+      document.querySelector('#shortcut-reattach').value = command.shortcut;
     }
   }
 }
@@ -19,14 +19,14 @@ async function updateUI() {
 /**
  * Update the shortcut based on the value in the textbox.
  */
-async function updateShortcut() {
+async function applyShortcut() {
   await browser.commands.update({
-    name: commandName,
-    shortcut: document.querySelector('#shortcut').value
+    name: commandDetach,
+    shortcut: document.querySelector('#shortcut-detach').value
   });
   await browser.commands.update({
-    name: commandUndo,
-    shortcut: document.querySelector('#shortcutundo').value
+    name: commandReattach,
+    shortcut: document.querySelector('#shortcut-reattach').value
   });
 }
 
@@ -34,8 +34,8 @@ async function updateShortcut() {
  * Reset the shortcut and update the textbox.
  */
 async function resetShortcut() {
-  await browser.commands.reset(commandName);
-  await browser.commands.reset(commandUndo);
+  await browser.commands.reset(commandDetach);
+  await browser.commands.reset(commandReattach);
   updateUI();
 }
 
@@ -47,5 +47,5 @@ document.addEventListener('DOMContentLoaded', updateUI);
 /**
  * Handle update and reset button clicks
  */
-document.querySelector('#update').addEventListener('click', updateShortcut)
+document.querySelector('#apply').addEventListener('click', applyShortcut)
 document.querySelector('#reset').addEventListener('click', resetShortcut)

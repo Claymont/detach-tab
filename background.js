@@ -27,7 +27,6 @@ browser.commands.onCommand.addListener(function(command) {
       for (let tabInfo of windowInfo.tabs) {
         var tabInformation = tabInfo.index;
         if (tabInformation == '0') {
-          console.log("Only one tab? Don't detach!");
           continue;
         }
         else {
@@ -36,7 +35,6 @@ browser.commands.onCommand.addListener(function(command) {
               tabId: tab.id
             });
           });
-          console.log("More than one tab! Tab detached!");
           break;
         }
       }
@@ -45,7 +43,7 @@ browser.commands.onCommand.addListener(function(command) {
     getTabs.then(logTabs);
   }
 
-  if (command == "undo-detach-tab") {
+  if (command == "reattach-tab") {
     function AllTabsAllWins(windowInfoArray) {
       for (let tabInfo of windowInfoArray) {
         var tabIdAllWin = tabInfo.tabs.map((tab) => {return tab.id});
@@ -55,8 +53,7 @@ browser.commands.onCommand.addListener(function(command) {
               for (let windowInfo of windowInfoArray) {
                 var windowInformation = windowInfo.id;
                 if (windowInformation != window.undoWinId) {
-                  console.log("Already reattached!");
-                  break;
+                  continue;
                 }
                 else  {
                   var moving = browser.tabs.move([window.undoTabId], {
@@ -65,7 +62,6 @@ browser.commands.onCommand.addListener(function(command) {
                   });
                   browser.windows.update(window.undoWinId, {focused: true});
                   browser.tabs.update(window.undoTabId, {active: true})
-                  console.log("Tab Reattached!");
                   break;
                 }
               }
@@ -75,7 +71,6 @@ browser.commands.onCommand.addListener(function(command) {
             break;
           }
           else {
-            console.log("Not the right tab, don't reattach!");
             continue;
           }
         }
