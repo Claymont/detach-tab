@@ -1,23 +1,130 @@
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #FFFFFF;
+    color: rgb(12, 12, 13);
+  }
+  input {
+    border: 1px solid rgba(12, 12, 13, 0.3);
+    color: rgb(12, 12, 13);
+  }
+  input:hover {
+    border-color: rgba(12, 12, 13, 0.5);
+  }
+  input:focus {
+    border-color: #0a84ff;
+    box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
+    outline: none;
+  }
+  button {
+    background-color: rgba(12, 12, 13, 0.1);
+    color: rgb(12, 12, 13);
+  }
+  button:focus-visible {
+    border-color: #0a84ff;
+    box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
+    outline: none;
+  }
+  button:hover {
+    background-color: rgba(12, 12, 13, 0.2);
+  }
+  button:active {
+    background-color: rgba(12, 12, 13, 0.3);
+  }
+
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #202023;
+    color: rgb(249, 249, 250);
+  }
+  input {
+    border: 1px solid rgba(249,249,250,0.2);
+    color: rgb(249, 249, 250);
+  }
+  input:hover {
+    border-color: rgba(249,249,250,0.3);
+  }
+  input:focus {
+    border-color: #0a84ff;
+    box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
+    outline: none;
+  }
+  button {
+    background-color: rgba(249, 249, 250, 0.1);
+    color: rgb(249, 249, 250);
+  }
+  button:focus-visible {
+    border-color: #0a84ff;
+    box-shadow: 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
+    outline: none;
+  }
+  button:hover {
+    background-color: rgba(249, 249, 250, 0.15);
+  }
+  button:active {
+    background-color: rgba(249, 249, 250, 0.2);
+  }
+}
+
 body {
-  font-size: 15px !important;
+  font-family: Segoe UI, Helvetica Neue, Helvetica, Arial;
+  margin-left: 8px;
+  font-size: 15px;
+}
+
+.box {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-gap: 8px;
+}
+
+label {
+  font-family: Segoe UI, Helvetica Neue, Helvetica, Arial;
+  display: grid;
+  justify-content: end;
+  align-items: center;
+}
+
+a {
+  color: #45a1ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 input {
+  font-family: Segoe UI, Helvetica Neue, Helvetica, Arial;
+  display: grid;
+  align-items: center;
+  min-height: 28px;
+  width: 224px;
   font-size: 14px !important;
-}
-
-#shortcut-detach {
-  margin-bottom: 8px;
-}
-
-#shortcut-reattach {
-  margin-bottom: 16px;
+  background-color: transparent;
+  padding-inline: 8px;
+  border-radius: 2px;
 }
 
 button {
-  font-size: 14px !important;
+  font-family: Segoe UI, Helvetica Neue, Helvetica, Arial;
+  font-size: 15px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  min-height: 32px;
+  margin-top: 12px;
+  margin-left: 0px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  width: auto;
+  min-width: 6.3em;
+  cursor: default;
+  box-shadow: none;
 }
 
-#apply {
-  margin-right: 4px;
+/* Increase size to hide white background */
+.bug {
+  height: 95px;
 }

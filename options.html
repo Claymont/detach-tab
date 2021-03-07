@@ -8,21 +8,25 @@
 
   <body>
 
-    <form class="browser-style"><br>
+    <form><br>
       <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/commands#Key_combinations">Keyboard shortcut combination rules</a>
       <br><br>
-      <label>Detach:</label><br>
+      <div class="box">
+      <label>Detach</label>
       <input type="text" id="shortcut-detach">
-      <br>
-      <label>Reattach:</label><br>
+      <label>Reattach</label>
       <input type="text" id="shortcut-reattach">
-      <br>
-      <button id="apply" class="browser-style">Apply</button>
-      <button id="reset" class="browser-style">Reset</button>
-      <br><br>
+      </div>
+      <div>
+      <button id="apply">Apply</button>
+      <button id="reset">Reset</button>
+      </div>
     </form>
 
-    <script src="options.js"></script>
+    <div class="bug"></div>
+
   </body>
+
+  <script src="options.js"></script>
 
 </html>
