@@ -1,5 +1,5 @@
-﻿const commandDetach = 'detach-tab';
-const commandReattach = 'reattach-tab';
+﻿const commandDetach = "detach-tab";
+const commandReattach = "reattach-tab";
 
 /**
  * Update the UI: set the value of the shortcut textbox.
@@ -8,10 +8,10 @@ async function updateUI() {
   let commands = await browser.commands.getAll();
   for (command of commands) {
     if (command.name === commandDetach) {
-      document.querySelector('#shortcut-detach').value = command.shortcut;
+      document.querySelector("#shortcut-detach").value = command.shortcut;
     }
     if (command.name === commandReattach) {
-      document.querySelector('#shortcut-reattach').value = command.shortcut;
+      document.querySelector("#shortcut-reattach").value = command.shortcut;
     }
   }
 }
@@ -22,11 +22,11 @@ async function updateUI() {
 async function applyShortcut() {
   await browser.commands.update({
     name: commandDetach,
-    shortcut: document.querySelector('#shortcut-detach').value
+    shortcut: document.querySelector("#shortcut-detach").value,
   });
   await browser.commands.update({
     name: commandReattach,
-    shortcut: document.querySelector('#shortcut-reattach').value
+    shortcut: document.querySelector("#shortcut-reattach").value,
   });
 }
 
@@ -42,10 +42,10 @@ async function resetShortcut() {
 /**
  * Update the UI when the page loads.
  */
-document.addEventListener('DOMContentLoaded', updateUI);
+document.addEventListener("DOMContentLoaded", updateUI);
 
 /**
  * Handle update and reset button clicks
  */
-document.querySelector('#apply').addEventListener('click', applyShortcut)
-document.querySelector('#reset').addEventListener('click', resetShortcut)
+document.querySelector("#apply").addEventListener("click", applyShortcut);
+document.querySelector("#reset").addEventListener("click", resetShortcut);

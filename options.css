@@ -1,6 +1,6 @@
 @media (prefers-color-scheme: light) {
   body {
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: rgb(12, 12, 13);
   }
   input {
@@ -30,7 +30,6 @@
   button:active {
     background-color: rgba(12, 12, 13, 0.3);
   }
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,11 +38,11 @@
     color: rgb(249, 249, 250);
   }
   input {
-    border: 1px solid rgba(249,249,250,0.2);
+    border: 1px solid rgba(249, 249, 250, 0.2);
     color: rgb(249, 249, 250);
   }
   input:hover {
-    border-color: rgba(249,249,250,0.3);
+    border-color: rgba(249, 249, 250, 0.3);
   }
   input:focus {
     border-color: #0a84ff;
