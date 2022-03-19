@@ -6,10 +6,9 @@
 
 browser.tabs.onDetached.addListener(handleDetached);
 
-browser.commands.onCommand.addListener(function(command) {
-
+browser.commands.onCommand.addListener(function (command) {
   function getCurrentWindowTabs() {
-    return browser.tabs.query({currentWindow: true});
+    return browser.tabs.query({ currentWindow: true });
   }
 
   function callOnActiveTab(callback) {
@@ -26,27 +25,28 @@ browser.commands.onCommand.addListener(function(command) {
     function logTabs(windowInfo) {
       for (let tabInfo of windowInfo.tabs) {
         var tabInformation = tabInfo.index;
-        if (tabInformation == '0') {
+        if (tabInformation == "0") {
           continue;
-        }
-        else {
+        } else {
           callOnActiveTab((tab, tabs) => {
             var creating = browser.windows.create({
-              tabId: tab.id
+              tabId: tab.id,
             });
           });
           break;
         }
       }
     }
-    let getTabs = browser.windows.getCurrent({populate: true});
+    let getTabs = browser.windows.getCurrent({ populate: true });
     getTabs.then(logTabs);
   }
 
   if (command == "reattach-tab") {
     function AllTabsAllWins(windowInfoArray) {
       for (let tabInfo of windowInfoArray) {
-        var tabIdAllWin = tabInfo.tabs.map((tab) => {return tab.id});
+        var tabIdAllWin = tabInfo.tabs.map((tab) => {
+          return tab.id;
+        });
         for (let tabtabInfo of tabIdAllWin) {
           if (tabtabInfo == window.undoTabId) {
             function AllWins(windowInfoArray) {
@@ -54,30 +54,27 @@ browser.commands.onCommand.addListener(function(command) {
                 var windowInformation = windowInfo.id;
                 if (windowInformation != window.undoWinId) {
                   continue;
-                }
-                else  {
+                } else {
                   var moving = browser.tabs.move([window.undoTabId], {
                     windowId: window.undoWinId,
-                    index: window.undoPosId
+                    index: window.undoPosId,
                   });
-                  browser.windows.update(window.undoWinId, {focused: true});
-                  browser.tabs.update(window.undoTabId, {active: true})
+                  browser.windows.update(window.undoWinId, { focused: true });
+                  browser.tabs.update(window.undoTabId, { active: true });
                   break;
                 }
               }
             }
-            var getAllWins = browser.windows.getAll({populate: true});
+            var getAllWins = browser.windows.getAll({ populate: true });
             getAllWins.then(AllWins);
             break;
-          }
-          else {
+          } else {
             continue;
           }
         }
       }
     }
-    var getAllTabsAllWins = browser.windows.getAll({populate: true});
+    var getAllTabsAllWins = browser.windows.getAll({ populate: true });
     getAllTabsAllWins.then(AllTabsAllWins);
-  };
-
+  }
 });
