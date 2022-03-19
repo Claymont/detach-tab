@@ -13,11 +13,14 @@ browser.commands.onCommand.addListener(function (command) {
 
   function callOnActiveTab(callback) {
     getCurrentWindowTabs().then((tabs) => {
+      tabIdArray = [];
       for (var tab of tabs) {
-        if (tab.active) {
-          callback(tab, tabs);
+        // we want to move all highlighted tabs (the active tab is always highlighted)
+        if (tab.highlighted) {
+          tabIdArray.push(tab.id);
         }
       }
+      callback(tabIdArray, tabs);
     });
   }
 
@@ -28,10 +31,21 @@ browser.commands.onCommand.addListener(function (command) {
         if (tabInformation == "0") {
           continue;
         } else {
-          callOnActiveTab((tab, tabs) => {
-            var creating = browser.windows.create({
-              tabId: tab.id,
-            });
+          callOnActiveTab((tabIdArray, tabs) => {
+            // new windows can only take a single new tab
+            firstTab = tabIdArray.shift();
+            var creating = browser.windows.create({ tabId: firstTab });
+
+            // if there was more than one tab, move the rest
+            if (tabIdArray.length > 0) {
+              creating.then((window) => {
+                browser.tabs.move(tabIdArray, {
+                  // add tabs after the first one
+                  index: -1,
+                  windowId: window.id,
+                });
+              });
+            }
           });
           break;
         }
