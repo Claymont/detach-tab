@@ -1,0 +1,27 @@
+﻿{
+  "manifest_version": 2,
+  "name": "Vertical tab bugs",
+  "version": "0.0.7",
+  "description": ".",
+  "developer": {
+    "name": "Claymont",
+    "url": "https://github.com/Claymont/detach-tab"
+  },
+  "background": {
+      "scripts": ["background.js"]
+  },
+  "commands": {
+    "new-window": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y"
+      },
+      "description": "Opens a new window"
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "claymont@mail.com_detach-tab",
+      "strict_min_version": "60.0"
+    }
+  }
+}
